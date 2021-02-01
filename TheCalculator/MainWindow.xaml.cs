@@ -157,22 +157,6 @@ namespace TheCalculator
             }
 
             return validInputs;
-
-
-            //if (!int.TryParse(TextBox_Temperature.Text, out int temperatureCelsius) && _tunits == tempUnits.celsius)
-            //{
-            //    validInputs = false;
-            //    errorMessage += "Please enter a valid temperature that is less than 11°C." + Environment.NewLine;
-            //}
-
-
-            //if (!int.TryParse(TextBox_Wind.Text, out int wind) || Convert.ToInt32(TextBox_Wind.Text) <= 3)
-            //{
-            //    validInputs = false;
-            //    errorMessage += "Please enter a valid wind speed that is at least 4 MPH." + Environment.NewLine;
-            //}
-
-
         }
 
         //Update Units
