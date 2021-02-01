@@ -1,0 +1,256 @@
+﻿<Window x:Class="TheCalculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TheCalculator"
+        mc:Ignorable="d"
+        Background="#e5e2db"
+        WindowStartupLocation="CenterScreen"
+        Title="Calculate Wind Chill" 
+        Height="400" 
+        Width="600">
+    <Window.Resources>
+        <!--Source: https://www.kailashsblogs.com/2017/01/round-corner-textbox-in-wpf.html-->
+        <ControlTemplate
+            x:Key="RoundTextboxCornerTemplate"
+            TargetType="{x:Type TextBoxBase}">
+            <Border
+                Background="{TemplateBinding Background}"   
+                x:Name="Bd" 
+                BorderBrush="#55565e" 
+                BorderThickness="{TemplateBinding BorderThickness}"
+                CornerRadius="5">
+                <ScrollViewer x:Name="PART_ContentHost"/>
+            </Border>
+        </ControlTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid
+            Margin="10,10,10,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="300"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Label
+                Content="Calculate Wind Chill"
+                Grid.Row="0"
+                Grid.Column="0"
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center"
+                FontFamily="Roboto"
+                FontSize="24"
+                FontWeight="Bold"
+                Background="#286ea8"/>
+            <Grid
+                Grid.Row="1"
+                Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid
+                    Grid.Row="0"
+                    Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        x:Name="Label_Temperature"
+                        Content="Temperature"
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        FontSize="18"/>
+                    <StackPanel
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Orientation="Vertical"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                        <RadioButton
+                            x:Name="RadioButton_Fahrenheit"
+                            Content="Fahrenheit"
+                            IsChecked="True"
+                            FontSize="12"/>
+                        <RadioButton
+                            x:Name="RadioButton_Celsius"
+                            Content="Celsius"
+                            FontSize="12"/>
+                    </StackPanel>
+                    <TextBox
+                        x:Name="TextBox_Temperature"
+                        Grid.Row="0"
+                        Grid.Column="3"
+                        Width="100"
+                        Height="30"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        HorizontalContentAlignment="Center"
+                        Template="{StaticResource RoundTextboxCornerTemplate}" />
+                    <Label
+                        x:Name="Label_Wind"
+                        Content="Wind Speed"
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        FontSize="18"/>
+                    <StackPanel
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Orientation="Vertical"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                        <RadioButton
+                            x:Name="RadioButton_Mph"
+                            Content="MPH"
+                            IsChecked="True"
+                            FontSize="12"/>
+                        <RadioButton
+                            x:Name="RadioButton_Kph"
+                            Content="KPH"
+                            FontSize="12"/>
+                    </StackPanel>
+                    <TextBox
+                        x:Name="TextBox_Wind"
+                        Grid.Row="1"
+                        Grid.Column="3"
+                        Width="100"
+                        Height="30"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        HorizontalContentAlignment="Center"
+                        Template="{StaticResource RoundTextboxCornerTemplate}"/>
+                </Grid>
+                <Grid
+                    Grid.Row="2"
+                    Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        x:Name="Button_Calculate"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Content="Calculate"
+                        FontSize="18"
+                        Width="90"
+                        Height="30"
+                        Background="#94c3ea"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom"
+                        Margin="0 0 0 10"
+                        Click="Button_Calculate_Click"/>
+                    <TextBox
+                        x:Name="TextBox_Calculate_Fahrenheit"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Width="65"
+                        Height="30"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        Margin="0 10 0 0"
+                        VerticalContentAlignment="Center"
+                        HorizontalContentAlignment="Center"
+                        Background="White"
+                        Template="{StaticResource RoundTextboxCornerTemplate}"/>
+                    <Label
+                        x:Name="Label_Fahrenheit"
+                        Content="°F"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        FontSize="18"
+                        VerticalContentAlignment="Center"
+                        HorizontalContentAlignment="Right"
+                        Padding="0 0 12 0"
+                        />
+                    <TextBox
+                        x:Name="TextBox_Calculate_Celsius"
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Width="65"
+                        Height="30"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        Margin="0 10 0 0"
+                        VerticalContentAlignment="Center"
+                        HorizontalContentAlignment="Center"
+                        Background="White"
+                        Template="{StaticResource RoundTextboxCornerTemplate}"/>
+                    <Label
+                        x:Name="Label_Celsius"
+                        Content="°C"
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        FontSize="18"
+                        VerticalContentAlignment="Center"
+                        HorizontalContentAlignment="Right"
+                        Padding="0 0 10 0"
+                        />
+
+                </Grid>
+            </Grid>
+            <StackPanel
+                Grid.Row="0"
+                Grid.Column="1"
+                Orientation="Horizontal">
+                <Button
+                    x:Name="Button_Help"
+                    Grid.Row="0"
+                    Content="Help"
+                    FontSize="18"
+                    Width="75"
+                    Height="30"
+                    Margin="10 0 0 0"
+                    Background="#94c3ea"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Click="Button_HelpButton_Click"/>
+             
+                <Button
+                    x:Name="Button_Exit"
+                    Grid.Row="0"
+                    Content="Exit"
+                    FontSize="18"
+                    Width="75"
+                    Height="30"
+                    Margin="20 0 0 0"
+                    Background="#94c3ea"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Click ="Button_ExitButton_Click"/>
+            </StackPanel>
+            <StackPanel
+                Grid.Row="1"
+                Grid.Column="1">
+                <Image
+                    Width="190"
+                    Height="190"
+                    VerticalAlignment="Top"
+                    Source="Images/wind.jpg"/>
+            </StackPanel>
+            
+        </Grid>
+    </Grid>
+</Window>
